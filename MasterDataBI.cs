@@ -18,10 +18,15 @@ namespace SusheelRawat.BI
         {
             return IMasterDataDA.GetHobbies().Select(obj => new VMHobbies()
             {
+<<<<<<< HEAD
                 HobbyID=obj.HobbyID,
                 Hobby=obj.Hobby,
                 x=9,
                 y=4
+=======
+                HobbyID=1,
+                //Hobby=obj.Hobby
+>>>>>>> 21029030294f719c2a42324e792505a428b4fcfb
             }).ToList();
         }
 
