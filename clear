@@ -1,0 +1,57 @@
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  1) ﻿using SusheelRawat.DA;
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  2) using SusheelRawat.Models;
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  3) using System;
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  4) using System.Collections.Generic;
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  5) using System.Text;
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  6) using System.Linq;
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  7) namespace SusheelRawat.BI
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  8) {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530  9)     public class MasterDataBI:IMasterDataBI
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 10)     {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 11)         IMasterDataDA IMasterDataDA;
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 12)         public MasterDataBI(IMasterDataDA _IMasterDataDA)
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 13)         {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 14)             this.IMasterDataDA = _IMasterDataDA;
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 15)         }
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 16) 
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 17)         public List<VMHobbies> GetHobbiesBI()
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 18)         {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 19)             return IMasterDataDA.GetHobbies().Select(obj => new VMHobbies()
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 20)             {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 21)                 HobbyID=obj.HobbyID,
+b04eae47 (srsusheel 2019-02-13 00:33:36 +0530 22)                 Hobby=obj.Hobby,
+b04eae47 (srsusheel 2019-02-13 00:33:36 +0530 23)                 x=9,
+b04eae47 (srsusheel 2019-02-13 00:33:36 +0530 24)                 y=4
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 25)             }).ToList();
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 26)         }
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 27) 
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 28) 
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 29)         public List<VMCountry> GetCountryBI()
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 30)         {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 31)             return IMasterDataDA.GetCountry().Select(obj => new VMCountry()
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 32)             {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 33)                 CountryId=obj.CountryID,
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 34)                 CountryName=obj.CountryName
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 35)             }).ToList();
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 36)         }
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 37) 
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 38) 
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 39)         public List<VMSate> GetSateBI(int CountryID)
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 40)         {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 41)             return IMasterDataDA.GetState(CountryID).Select(obj => new VMSate()
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 42)             {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 43)                 StateID=obj.StateID,
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 44)                 StateName=obj.StateName
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 45)             }).ToList();
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 46)         }
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 47) 
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 48)         public List<VMCity> GetCityBI(int SateID)
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 49)         {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 50)             return IMasterDataDA.GetCity(SateID).Select(obj => new VMCity()
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 51)             {
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 52)                 CityID=obj.CityID,
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 53)                 CityName=obj.CityName
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 54)             }).ToList();
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 55)         }
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 56)     }
+^2bd8eb5 (srsusheel 2019-02-10 01:54:58 +0530 57) }
