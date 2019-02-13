@@ -6,7 +6,7 @@ using SusheelRawat.DA;
 using SusheelRawat.Models;
 using System.Linq;
 using SusheelRawat.Models.CustomDominModel;
-
+using modiji;
 namespace SusheelRawat.BI
 {
     public class UserProfileBI : IUserProfileBI
